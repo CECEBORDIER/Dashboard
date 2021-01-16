@@ -13,11 +13,20 @@ export class UsersController {
     getUsers() {
         return this.userService.getUser();
     }
+    // @Post()
+    // @HttpCode(HttpStatus.CREATED)
+    // createUser(@Body() user: UserDto) {
+    //     this.userService.createUser(user);
+    // }
     @Post()
-    @HttpCode(HttpStatus.CREATED)
-    createUser(@Body() user: UserDto) {
-        this.userService.createUser(user);
+    async create(@Body() userDto: UserDto){
+        await this.userService.create(userDto);
     }
+    // @Post()
+    // async create(@Body() createCatDto: CreateCatDto) {
+    //   await this.catsService.create(createCatDto);
+    // }
+
     @Patch()
     updateUser() {
     }
