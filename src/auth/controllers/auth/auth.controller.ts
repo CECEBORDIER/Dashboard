@@ -1,6 +1,7 @@
-import { Controller, Get, Res, UseGuards } from '@nestjs/common';
+import { Controller, Get, HttpStatus, Res, UseGuards } from '@nestjs/common';
 import { Response } from 'express';
 import { discordAuthGuard } from 'src/auth/guards';
+import { facebookAuthGuard } from 'src/auth/guards/indexFb';
 
 
 @Controller('auth')
@@ -14,8 +15,9 @@ export class AuthController {
         res.send(200);
     }
 
-    @Get('status')
-    status() { }
-    @Get('logout')
-    logout() { }
+    @Get("/facebook")
+    @UseGuards(facebookAuthGuard)
+    facebookLogin(){
+
+    }
 }
